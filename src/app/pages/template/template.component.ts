@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-template',
@@ -6,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./template.component.scss'],
 })
 export class TemplateComponent implements OnInit {
+  user = {
+    name: 'Brayan',
+  };
+
   constructor() {}
 
   ngOnInit(): void {}
 
-  save() {}
+  save(form: NgForm) {
+    console.log(form);
+  }
 }
