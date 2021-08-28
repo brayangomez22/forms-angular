@@ -8,11 +8,13 @@
         <input
           class="form-control"
           name="name"
+          [class.is-invalid]="name.invalid && name.touched"
           [ngModel]="user.name"
           type="text"
           placeholder="Nombre"
           required
-          maxlength="5"
+          minlength="5"
+          #name="ngModel"
         />
       </div>
     </div>
@@ -20,7 +22,17 @@
     <div class="form-group row">
       <label class="col-2 col-form-label">Apellido</label>
       <div class="col-8">
-        <input class="form-control" type="text" placeholder="Apellido" />
+        <input
+          class="form-control"
+          type="text"
+          placeholder="Apellido"
+          name="lastname"
+          [class.is-invalid]="lastname.invalid && lastname.touched"
+          [ngModel]="user.lastname"
+          required
+          minlength="5"
+          #lastname="ngModel"
+        />
       </div>
     </div>
   </div>
@@ -31,7 +43,13 @@
       <input
         class="form-control"
         type="email"
-        placeholder="Correo electrónico"
+        placeholder="Correo"
+        required
+        name="email"
+        [class.is-invalid]="email.invalid && email.touched"
+        [ngModel]="user.email"
+        #email="ngModel"
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
       />
     </div>
   </div>
