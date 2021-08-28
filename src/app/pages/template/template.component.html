@@ -16,6 +16,11 @@
           minlength="5"
           #name="ngModel"
         />
+        <small
+          class="form-text text-danger"
+          *ngIf="name.invalid && name.touched"
+          >Ingrese 5 letras</small
+        >
       </div>
     </div>
 
@@ -33,6 +38,11 @@
           minlength="5"
           #lastname="ngModel"
         />
+        <small
+          class="form-text text-danger"
+          *ngIf="lastname.invalid && lastname.touched"
+          >Ingrese 5 letras</small
+        >
       </div>
     </div>
   </div>
@@ -51,6 +61,11 @@
         #email="ngModel"
         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
       />
+      <small
+        class="form-text text-danger"
+        *ngIf="email.invalid && email.touched"
+        >El correo es obligatorio</small
+      >
     </div>
   </div>
 
