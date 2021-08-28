@@ -1,11 +1,19 @@
 <h4>Formularios <small> Template </small></h4>
 <hr />
-<form autocomplete="off">
+<form autocomplete="off" (ngSubmit)="save()">
   <div>
     <div class="form-group row">
       <label class="col-2 col-form-label">Nombre</label>
       <div class="col-8">
-        <input class="form-control" type="text" placeholder="Nombre" />
+        <input
+          class="form-control"
+          name="name"
+          ngModel
+          type="text"
+          placeholder="Nombre"
+          required
+          maxlength="5"
+        />
       </div>
     </div>
 
