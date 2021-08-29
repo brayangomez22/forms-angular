@@ -29,6 +29,31 @@ export class ReactiveComponent implements OnInit {
     return this.form.get('email')?.invalid && this.form.get('email')?.touched;
   }
 
+  get districtNoValid() {
+    return (
+      this.form.get('address.district')?.invalid &&
+      this.form.get('address.district')?.touched
+    );
+  }
+
+  get cityNoValid() {
+    return (
+      this.form.get('address.city')?.invalid &&
+      this.form.get('address.city')?.touched
+    );
+  }
+
+  get pass1NoValid() {
+    return this.form.get('pass1')?.invalid && this.form.get('pass1')?.touched;
+  }
+
+  get pass2NoValid() {
+    const pass1 = this.form.get('pass1')?.value;
+    const pass2 = this.form.get('pass2')?.value;
+
+    return pass1 === pass2 ? false : true;
+  }
+
   createForm() {
     this.form = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(5)]],
@@ -52,7 +77,13 @@ export class ReactiveComponent implements OnInit {
   save() {
     if (this.form.invalid) {
       return Object.values(this.form.controls).forEach((control) => {
-        control.markAsTouched();
+        if (control instanceof FormGroup) {
+          Object.values(control.controls).forEach((control) =>
+            control.markAsTouched()
+          );
+        } else {
+          control.markAsTouched();
+        }
       });
     }
 

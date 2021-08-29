@@ -58,6 +58,7 @@
           class="form-control"
           placeholder="Distrito"
           formControlName="district"
+          [class.is-invalid]="districtNoValid"
         />
       </div>
 
@@ -67,6 +68,7 @@
           class="form-control"
           placeholder="Ciudad"
           formControlName="city"
+          [class.is-invalid]="cityNoValid"
         />
       </div>
     </div>
