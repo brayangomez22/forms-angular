@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reactive',
@@ -15,6 +15,10 @@ export class ReactiveComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  get hobbies() {
+    return this.form.get('hobbies') as FormArray;
+  }
 
   get nameNoValid() {
     return this.form.get('name')?.invalid && this.form.get('name')?.touched;
@@ -72,6 +76,7 @@ export class ReactiveComponent implements OnInit {
         district: ['', Validators.required],
         city: ['', Validators.required],
       }),
+      hobbies: this.fb.array([]),
     });
   }
 
@@ -102,6 +107,8 @@ export class ReactiveComponent implements OnInit {
       });
     }
 
-    this.form.reset();
+    this.form.reset({
+      name: 'Sin nombre',
+    });
   }
 }
