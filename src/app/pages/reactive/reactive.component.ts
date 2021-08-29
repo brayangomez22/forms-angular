@@ -11,6 +11,7 @@ export class ReactiveComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {
     this.createForm();
+    this.loadDataToForm();
   }
 
   ngOnInit(): void {}
@@ -74,6 +75,20 @@ export class ReactiveComponent implements OnInit {
     });
   }
 
+  loadDataToForm() {
+    this.form.reset({
+      name: 'Brayan',
+      lastname: 'Gomez',
+      email: 'pepe@gmail.com',
+      pass1: '123',
+      pass2: '123',
+      address: {
+        district: 'Pepe',
+        city: 'Medallo',
+      },
+    });
+  }
+
   save() {
     if (this.form.invalid) {
       return Object.values(this.form.controls).forEach((control) => {
@@ -87,6 +102,6 @@ export class ReactiveComponent implements OnInit {
       });
     }
 
-    console.log(this.form);
+    this.form.reset();
   }
 }
