@@ -35,6 +35,10 @@ export class ReactiveComponent implements OnInit {
     return this.form.get('email')?.invalid && this.form.get('email')?.touched;
   }
 
+  get userNoValid() {
+    return this.form.get('user')?.invalid && this.form.get('user')?.touched;
+  }
+
   get districtNoValid() {
     return (
       this.form.get('address.district')?.invalid &&
@@ -72,6 +76,7 @@ export class ReactiveComponent implements OnInit {
             Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$'),
           ],
         ],
+        user: ['', , this.validators.userExists],
         pass1: ['', Validators.required],
         pass2: ['', Validators.required],
         address: this.fb.group({
