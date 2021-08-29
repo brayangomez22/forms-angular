@@ -1,18 +1,28 @@
 <h4>Formularios <small> Reactivos </small></h4>
 <hr />
-<form autocomplete="off">
+<form autocomplete="off" [formGroup]="form" (ngSubmit)="save()">
   <div>
     <div class="form-group row">
       <label class="col-2 col-form-label">Nombre</label>
       <div class="col-8">
-        <input class="form-control" type="text" placeholder="Nombre" />
+        <input
+          class="form-control"
+          type="text"
+          placeholder="Nombre"
+          formControlName="name"
+        />
       </div>
     </div>
 
     <div class="form-group row">
       <label class="col-2 col-form-label">Apellido</label>
       <div class="col-8">
-        <input class="form-control" type="text" placeholder="Apellido" />
+        <input
+          class="form-control"
+          type="text"
+          placeholder="Apellido"
+          formControlName="lastname"
+        />
       </div>
     </div>
   </div>
@@ -24,6 +34,7 @@
         class="form-control"
         type="email"
         placeholder="Correo electrónico"
+        formControlName="email"
       />
     </div>
   </div>
