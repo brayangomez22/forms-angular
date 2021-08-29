@@ -94,6 +94,14 @@ export class ReactiveComponent implements OnInit {
     });
   }
 
+  addHobbie() {
+    this.hobbies.push(this.fb.control(''));
+  }
+
+  deleteHobbie(i: number) {
+    this.hobbies.removeAt(i);
+  }
+
   save() {
     if (this.form.invalid) {
       return Object.values(this.form.controls).forEach((control) => {
