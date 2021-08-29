@@ -61,24 +61,29 @@ export class ReactiveComponent implements OnInit {
   }
 
   createForm() {
-    this.form = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(5)]],
-      lastname: ['', [Validators.required, this.validators.noManco]],
-      email: [
-        '',
-        [
-          Validators.required,
-          Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$'),
+    this.form = this.fb.group(
+      {
+        name: ['', [Validators.required, Validators.minLength(5)]],
+        lastname: ['', [Validators.required, this.validators.noManco]],
+        email: [
+          '',
+          [
+            Validators.required,
+            Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$'),
+          ],
         ],
-      ],
-      pass1: ['', Validators.required],
-      pass2: ['', Validators.required],
-      address: this.fb.group({
-        district: ['', Validators.required],
-        city: ['', Validators.required],
-      }),
-      hobbies: this.fb.array([]),
-    });
+        pass1: ['', Validators.required],
+        pass2: ['', Validators.required],
+        address: this.fb.group({
+          district: ['', Validators.required],
+          city: ['', Validators.required],
+        }),
+        hobbies: this.fb.array([]),
+      },
+      {
+        validators: this.validators.samePasswords('pass1', 'pass2'),
+      }
+    );
   }
 
   loadDataToForm() {
